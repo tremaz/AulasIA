@@ -54,17 +54,19 @@ valoresOB = []
 valoresAJ = []
 residuos = []
 
-for i in range(len(X)):
+print("Observação i || Valor observado yi || Valor ajustado y^ || Residuo e")
+for i in range(len(X)): 
      
-     AuxOb = X[i].item()
-     valoresOB.append(AuxOb)
+     AuxOb = Y[i].item()
      AuxAj = modelo.predict(X[i]).item()
+     res = (AuxOb - AuxAj)
+     valoresOB.append(AuxOb)
      valoresAJ.append(AuxAj)
+     residuos.append(res)
+     print("       ",i+1,"    ||     ", AuxOb,"      ||    ", AuxAj," || ", res)
 
-     residuos.append(AuxOb - AuxAj)
 
-""" print("Valores ajustados: ", valoresAJ) """
-print("Residuos: ", residuos)
 
-fig = px.scatter(x=X, y=Y, trendline="ols", labels={"x":"x","y":"y"})
-fig.show()
+""" fig = px.scatter(x=X, y=Y, trendline="ols", labels={"x":"x","y":"y"})
+fig.show() """
+
